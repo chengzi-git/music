@@ -303,7 +303,6 @@ export default {
     height: 100vh;
     font-size: 0.6rem;
     line-height: 2;
-    background-color: #fff;
   }
   .wrapper_content {
     margin-top: 0.2rem;
