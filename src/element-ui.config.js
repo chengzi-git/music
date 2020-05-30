@@ -2,14 +2,17 @@ import {
     Button,
     Input,
     Carousel,
-    CarouselItem
+    CarouselItem,
+    Loading,
+
 } from 'element-ui'
 
 let arr = [
     Button,
     Input,
     Carousel,
-    CarouselItem
+    CarouselItem,
+    Loading,
 ]
 
 export default function (Vue) {

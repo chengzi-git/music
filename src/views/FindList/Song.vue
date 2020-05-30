@@ -63,7 +63,14 @@
         </div>
       </div>
       <div class="wrapper_content">
-        <div v-if="this.show" class="wrapper_loading">加载中...</div>
+        <div
+        class="warpper_loading"
+        v-loading="loading"
+        element-loading-text="拼命加载中"
+        element-loading-spinner="el-icon-loading"
+        element-loading-background="rgba(0, 0, 0, 0.8)"
+        style="width: 100%"
+      ></div>
         <router-link tag="div"  class="wrapper_list" v-for="(item,i) in this.song.playlist.tracks" :key="i" :to="{name:'PlayView',query:{id:item.id}}">
           <span class="song_index">{{i+1}}</span>
           <div class="song-content">
@@ -86,7 +93,7 @@ export default {
       title: this.$route.query.title,
       count: this.$route.query.count,
       id: this.$route.query.id,
-      show:true,
+      loading:true,
       song: {
         playlist: {
           creator: { avatarUrl: "" },
@@ -103,8 +110,7 @@ export default {
   mounted() {
     this.axios(`/api/playlist/detail?id=${this.id}`).then(res => {
       this.song = res.data;
-      this.show = false;
-      console.log(res.data);
+      this.loading = false;
     });
   }
 };
@@ -297,6 +303,7 @@ export default {
     height: 100vh;
     font-size: 0.6rem;
     line-height: 2;
+    background-color: #fff;
   }
   .wrapper_content {
     margin-top: 0.2rem;

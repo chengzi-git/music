@@ -42,11 +42,44 @@
 import Banner from "../components/find/Banner";
 import RecommendedSong from "../components/find/RecommendedSong";
 import NewSong from "../components/find/NewSong";
+import { mapState, mapMutations } from "vuex";
 export default {
+  data() {
+    return {};
+  },
   components: {
     Banner,
     RecommendedSong,
     NewSong
+  },
+  computed: {
+    ...mapState({
+      reload: "reload"
+    })
+  },
+  methods: {
+    ...mapMutations({
+      noReload: "noReload"
+    }),
+    reloadFun() {
+      setTimeout(() => {
+        // console.log("0.1秒后改变");
+        if (this.reload) {
+          // console.log('刷新');
+          this.$router.go(0);
+        }
+        this.noReload()
+      }, 100);
+    }
+  },
+  // watch: {
+  //   reload(){
+  //   }
+  // },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.reloadFun();
+    });
   }
 };
 </script>
@@ -74,12 +107,12 @@ export default {
     left: 50%;
     transform: translateX(-50%) translateY(50%);
     line-height: 1rem;
-    .fa{
-      font-size: .5rem;
+    .fa {
+      font-size: 0.5rem;
       color: white;
     }
-    .fa-align-right{
-      transform:rotate(90deg);
+    .fa-align-right {
+      transform: rotate(90deg);
     }
   }
   .nav-item-text {
@@ -88,7 +121,7 @@ export default {
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(50%);
-    font-size: .28rem;
+    font-size: 0.28rem;
   }
 }
 </style>

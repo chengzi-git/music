@@ -15,7 +15,8 @@ Vue.use(VueRouter)
     path: '/',
     name: 'find',
     component: Find,
-    children:[{
+    children:[
+    {
       path: 'day', 
       name: 'Day',
       component: () => import(/* webpackChunkName: "about" */ '../views/FindList/Day.vue')
@@ -78,6 +79,30 @@ Vue.use(VueRouter)
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/Search.vue')
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/Login/Login.vue')
+  },
+  {
+    path: '/phone',
+    name: 'Phone',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/Login/Phone.vue')
+  },
+  {
+    path: '/loginsuccess',
+    name: 'LoginSuccess',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "about" */ '../views/Login/LoginSuccess.vue')
   },
 ]
 

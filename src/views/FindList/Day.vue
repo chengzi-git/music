@@ -8,7 +8,7 @@
         <span class="day">{{today}}</span>
         <span class="month">/{{month>=10?month:'0'+month}}</span>
       </div>
-      <div class="text">查收属于您的今日推荐</div>
+      <div class="text">查收属于您的今日推荐{{loginState}}</div>
     </div>
     <div class="wrapper-nav">
       <div class="nav-content">
@@ -19,12 +19,17 @@
         <i class="fa fa-list-ul"></i> 多选
       </div>
     </div>
-    <div class="nologin" v-if="!loginState">
-      <div class="text">当前未登录，请您跳转登陆页面进行登陆</div>
-      <div class="login">点我去登录</div>
-    </div>
-    <div class="wrapper_content">
-      <div v-show="show" class="wrapper_loading">加载中...</div>
+    
+    <div class="wrapper_content" v-if="loginState">
+      <div
+        class="warpper_loading"
+        v-loading="loading"
+        element-loading-text="拼命加载中"
+        element-loading-spinner="el-icon-loading"
+        element-loading-background="rgba(0, 0, 0, 0.8)"
+        style="width: 100%"
+      ></div>
+
       <router-link
         tag="div"
         class="wrapper_list"
@@ -45,17 +50,21 @@
         </div>
       </router-link>
     </div>
+    <div class="nologin" v-else>
+      <div class="text">当前未登录，请您跳转登陆页面进行登陆</div>
+      <div class="login" @click="login">点我去登录</div>
+    </div>
   </div>
 </template>
 <script>
-import { mapState, mapMutations } from "vuex";
+import { mapState } from "vuex";
 export default {
   data() {
     return {
       today: new Date().getDate(),
       month: new Date().getMonth() + 1,
-      show: true,
-      songs: null
+      songs: null,
+      loading: true
     };
   },
   computed: {
@@ -64,39 +73,27 @@ export default {
     })
   },
   methods: {
+    login() {
+      this.$router.push({ name: "Login" });
+    },
     goback() {
       this.$router.go(-1);
     },
-    ...mapMutations({
-      islogin: "islogin",
-      nologin: "nologin"
-    }),
     //获取今日推荐歌曲
     getToDaySong() {
-      if (this.loginState && this.songs == null) {
+      if (this.loginState) {
+        console.log('获取今日推荐歌曲')
         this.axios(`/api/recommend/songs`).then(res => {
-          this.show = false;
+          this.loading = false;
           this.songs = res.data.recommend;
         });
       }
     }
   },
   mounted() {
-    //获取登录状态
-    this.axios(`/api/login/status`)
-      .then(res => {
-        if (res.data.code == 200) {
-          console.log(res);
-          localStorage.setItem("loginState", 1);
-          this.getToDaySong();
-          this.islogin();
-        }
-      })
-      .catch(err => {
-        console.log("err==>", err);
-        localStorage.setItem("loginState", 0);
-      });
-  }
+    this.getToDaySong()
+  },
+
 };
 </script>
 <style lang="scss" scoped>
@@ -153,16 +150,17 @@ export default {
       margin-top: 0.2rem;
     }
   }
+   .wrapper_loading {
+      margin-top: 0.4rem;
+      text-align: center;
+    }
   .wrapper_content {
     width: 100vw;
     height: 100vh;
     margin-top: 0.2rem;
     padding: 0 0.2rem;
     background-color: #fff;
-    .wrapper_loading {
-      margin-top: 0.4rem;
-      text-align: center;
-    }
+   
     .wrapper_list {
       display: flex;
       justify-content: space-between;

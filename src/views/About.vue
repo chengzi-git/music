@@ -1,5 +1,15 @@
 <template>
-  <div class="about">
-    <p>This is an about page</p>
+  <div class="wrapper">
+    <p class="text">敬请期待...</p>
   </div>
 </template>
+
+<script >
+
+</script>
+<style lang="scss" scoped>
+.text{
+  font-size: 0.4rem;
+  text-align: center;
+}
+</style>

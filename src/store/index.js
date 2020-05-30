@@ -1,20 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import state from './state'
+import mutations from './mutations'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {
-    loginState:+localStorage.getItem('loginState')||0
-  },
-  mutations: {
-    islogin(state){
-      state.loginState = 1
-    },
-    nologin(state){
-      state.loginState = 0
-    }
-  },
+  state,
+  mutations,
   actions: {
   },
   modules: {

@@ -1,8 +1,10 @@
 <template>
-  <div id="app">
+  <!-- <div id="app" @mousewheel.prevent> -->
+  <div id="app" @mousewheel="bodyScroll" @touchmove="bodyScroll">
+    <UserComponent />
     <div class="nav-warpper">
-      <div class="nav-left">
-        <i class="fa fa-bars" ></i>
+      <div class="nav-left" @click="islogin">
+        <i class="fa fa-bars"></i>
       </div>
       <div class="nav-center">
         <ul class="nav-list">
@@ -21,7 +23,36 @@
     </keep-alive>
   </div>
 </template>
+<script>
+import UserComponent from "./components/user/UserComponent";
+import { mapState, mapMutations } from "vuex";
+export default {
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapState({
+      show: "show",
+      scroll: "scroll"
+    })
+  },
+  methods: {
+    ...mapMutations({
+      islogin: "isshow"
+    }),
+    //禁止页面滚动
+    bodyScroll(event) {
+      if (this.scroll) {
+        event.preventDefault();
+      }
+    }
+  },
 
+  components: {
+    UserComponent
+  }
+};
+</script>
 <style lang="scss">
 .nav-warpper {
   display: flex;
