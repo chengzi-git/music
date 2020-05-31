@@ -2,22 +2,53 @@
   <div class="wrapper">
     <div class="search-box">
       <i class="fa fa-angle-left" @click="back"></i>
-      <input class="inp" v-model="text" placeholder="搜索歌曲 歌手 专辑" />
+      <input
+        class="inp"
+        v-model="text"
+        placeholder="搜索歌曲 歌手 专辑"
+        @input="input"
+        @keydown.enter="searchFun"
+      />
       <i class="fa fa-search" @click="searchFun"></i>
     </div>
+    <div v-show="!text==''">
+      <div class="keyword-box" v-show="!this.show">
+        <div class="keyword-box-title" @click="searchTxt(keywordTitle)">搜索"{{keywordTitle}}"</div>
+        <div
+          class="keyword-box-item"
+          v-for="(item,i) in keyword"
+          :key="i"
+          @click="searchTxt(item.keyword)"
+        >
+          <i class="fa fa-search"></i>
+          <div>{{item.keyword}}</div>
+        </div>
+      </div>
+    </div>
+
     <div class="searchtip-box">
       <ul class="searchtip-list">
         <li class="list-item" v-for="(item,i) in searchtip" :key="i">{{item.keyword}}</li>
       </ul>
     </div>
-    <div class="result" v-show="!text==''&&!show">
-      <div>
-        <div class="result-title">单曲</div>
-        <div v-if="this.show" class="wrapper_loading">加载中...</div>
-        <router-link tag="div" class="wrapper_list" v-for="(item,i) in songs" :key="i" :to="{name:'PlayView',query:{id:item.id}}">
+    <div class="result" v-show="!text==''">
+      <div v-show="this.show">
+        <div class="result-title">最佳匹配结果</div>
+        <router-link
+          tag="div"
+          class="wrapper_list"
+          v-for="(item,i) in songs"
+          :key="i"
+          :to="{name:'PlayView',query:{id:item.id}}"
+        >
           <div class="song-content">
-            <p class="song_name" >
-              {{item.name}}
+            <p class="song_name">
+              <!-- 匹配关键字高亮 -->
+              <span>{{item.name.slice(0,item.name.toLowerCase().indexOf(text.toLowerCase()))}}</span>
+              <span
+                style="color:skyblue"
+              >{{item.name.slice(item.name.toLowerCase().indexOf(text.toLowerCase()),item.name.toLowerCase().indexOf(text.toLowerCase())+text.length)}}</span>
+              <span>{{item.name.substr(item.name.toLowerCase().indexOf(text.toLowerCase())+text.length)}}</span>
               <span class="song_alias">{{item.alias[0]}}</span>
             </p>
             <p class="song_author">{{item.artists[0].name}}</p>
@@ -28,7 +59,7 @@
         </router-link>
       </div>
     </div>
-    <div class="hot-search" >
+    <div class="hot-search">
       <div v-show="text==''">
         <div class="hot-title">热搜榜</div>
         <div
@@ -52,14 +83,17 @@
   </div>
 </template>
 <script>
+import { HOT_SEARCH, SEARCH_RESULT, SEARCH_SUGGEST } from "../api/api.js";
 export default {
   data() {
     return {
       text: "",
       hotSearch: [],
       songs: [],
-      show:true,
-      searchtip:[]
+      show: false,
+      searchtip: [],
+      keyword: [],
+      keywordTitle: ""
     };
   },
   methods: {
@@ -70,29 +104,39 @@ export default {
       this.text = title;
       this.searchFun();
     },
+    //监听文本框输入事件
+    input() {
+      this.show = false;
+      if (this.text) {
+        setTimeout(() => {
+          this.axios(SEARCH_SUGGEST(this.text)).then(res => {
+            this.keyword = res.data.result.allMatch;
+            this.keywordTitle = res.data.result.allMatch[0].keyword;
+          });
+        }, 100);
+      }
+    },
     //获取搜索结果
     searchFun() {
       if (this.text) {
-        this.axios(`/api//search?keywords=${this.text}`).then(res => {
-          this.show = false;
+        this.axios(SEARCH_RESULT(this.text)).then(res => {
+          this.show = true;
           this.songs = res.data.result.songs;
-          // console.log(res.data.result.songs);
         });
       }
-    },
-
+    }
   },
   mounted() {
-    this.axios("/api/search/hot/detail").then(res => {
+    //热门搜索
+    this.axios(HOT_SEARCH).then(res => {
       this.hotSearch = res.data.data;
     });
-     
   },
 
-  beforeRouteLeave (to, from, next) {
-    this.text = '';
-    next()
-  } 
+  beforeRouteLeave(to, from, next) {
+    this.text = "";
+    next();
+  }
 };
 </script>
 <style lang="scss" scoped>
@@ -100,12 +144,35 @@ export default {
   position: relative;
   left: 0;
   top: -0.8rem;
-  width: 100vw ;
+  width: 100vw;
   height: 100vh;
   z-index: 99;
   background: #fff;
   padding: 0 0.4rem;
   box-sizing: border-box;
+}
+
+.keyword-box {
+  margin-top: 0.2rem;
+  background: #fff;
+  padding: 0.2rem;
+  box-shadow: 0.1rem 0.1rem 0.1rem #8888;
+  .keyword-box-title {
+    font-size: 0.3rem;
+    color: skyblue;
+    margin-bottom: 0.2rem;
+  }
+  .fa {
+    margin-right: 0.2rem;
+  }
+  .keyword-box-item {
+    display: flex;
+    align-items: center;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    color: #888;
+    font-size: 0.3rem;
+  }
 }
 .search-box {
   display: flex;

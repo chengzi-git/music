@@ -20,6 +20,7 @@
   </div>
 </template>
 <script>
+import {NEW_SONGS}  from '../../api/api.js'
 export default {
   data() {
     return {
@@ -27,7 +28,7 @@ export default {
     };
   },
   mounted() {
-    this.axios(`/api/top/song?type=7`).then(res => {
+    this.axios(NEW_SONGS).then(res => {
       this.data =res.data.data.slice(0,3);
       // console.log(this.data)
     });

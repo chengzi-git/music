@@ -8,7 +8,7 @@
             <img :src="avatarUrl" alt />
           </div>
           <p class="user-text">{{nickname}}</p>
-          <button class="user-btn"><i class="fa fa-money"></i> 签到</button>
+          <el-button type="danger" class="user-btn" plain><i class="fa fa-money"></i>签到</el-button>
         </div>
         <div class="user-info" v-else>
           <p class="user-text">登录网易云音乐</p>
@@ -50,6 +50,7 @@
   </div>
 </template>
 <script>
+import {LOGIN_OUT,LOGIN_STATUS} from '../../api/api.js'
 import { mapState, mapMutations } from "vuex";
 import MsgBox from "../MsgBox";
 export default {
@@ -123,7 +124,7 @@ export default {
     //退出登录
     Ending() {
       if (this.loginState) {
-        this.axios("/api/logout").then(res => {
+        this.axios(LOGIN_OUT).then(res => {
           console.log("退出登录===>", res);
           localStorage.removeItem("loginState");
           localStorage.removeItem("nickname");
@@ -144,16 +145,16 @@ export default {
     })
   },
   mounted() {
-    this.axios("/api/login/status")
+    this.axios(LOGIN_STATUS)
       .then(res => {
-        console.log("获取登录状态==>", res);
+        console.log("目前为登录状态==>", res);
         if (res.data.code == 200) {
           localStorage.setItem("nickname", res.data.profile.nickname);
           this.avatarUrl=res.data.profile.avatarUrl;
         }
       })
       .catch(err => {
-        console.log("err==>", err);
+        console.log("不在登录状态==>", err);
       });
   },
   components: {
@@ -205,17 +206,13 @@ export default {
       line-height: 1.5rem;
       margin-left: 0.2rem;
     }
+    .fa-money{
+      margin-right: .1rem;
+    }
     .user-btn {
-      width: 1.5rem;
-      height: .6rem;
-      border: 0;
       position: absolute;
       right: .4rem;
       top: 1rem;
-      color: rgb(255, 255, 255);
-      background: rgb(221, 0, 27);
-      border-color: rgb(221, 0, 27);
-      border-radius: .4rem;
       outline: none;
     }
     .user-img-box {

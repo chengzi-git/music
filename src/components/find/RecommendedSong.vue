@@ -18,6 +18,7 @@
   </div>
 </template>
 <script>
+import {DATEREC_SONGLIST} from '../../api/api.js'
 export default {
   data() {
     return {
@@ -25,7 +26,7 @@ export default {
     };
   },
   mounted() {
-    this.axios(`/api/personalized?limit=6`).then(res => {
+    this.axios(DATEREC_SONGLIST).then(res => {
       this.data = res.data.result;
       // console.log(res.data.result);
     });

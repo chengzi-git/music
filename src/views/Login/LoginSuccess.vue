@@ -15,6 +15,7 @@
   </div>
 </template>
 <script>
+import {LOGIN} from '../../api/api.js'
 import MsgBox from "../../components/MsgBox";
 import { mapMutations } from "vuex";
 export default {
@@ -33,9 +34,7 @@ export default {
     },
     next() {
       if (this.password) {
-        this.axios(
-          `/api/login/cellphone?phone=${this.phone}&password=${this.password}`
-        ).then(res => {
+        this.axios(LOGIN(this.phone,this.password)).then(res => {
           if (res.data.code == 200) {
             this.$router.push({ name: "find"});
             localStorage.setItem("loginState",1);

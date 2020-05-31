@@ -63,19 +63,15 @@ export default {
     }),
     reloadFun() {
       setTimeout(() => {
-        // console.log("0.1秒后改变");
+        //0.1秒后改变
         if (this.reload) {
-          // console.log('刷新');
+          //刷新
           this.$router.go(0);
         }
         this.noReload()
       }, 100);
     }
   },
-  // watch: {
-  //   reload(){
-  //   }
-  // },
   beforeRouteEnter(to, from, next) {
     next(vm => {
       vm.reloadFun();

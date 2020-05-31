@@ -10,6 +10,7 @@
   </div>
 </template>
 <script>
+import {BANNER_SWIPER}  from '../../api/api.js'
 export default {
   data() {
     return {
@@ -19,7 +20,7 @@ export default {
     };
   },
   mounted() {
-    this.axios(`/api/banner?type=1`).then(res => {
+    this.axios(BANNER_SWIPER).then(res => {
       this.imgs =res.data.banners
     });
     this.timer = setInterval(() => {

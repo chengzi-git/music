@@ -86,6 +86,7 @@
   </div>
 </template>
 <script>
+import {SONG_DETAIL} from '../../api/api.js'
 export default {
   data() {
     return {
@@ -108,7 +109,7 @@ export default {
     }
   },
   mounted() {
-    this.axios(`/api/playlist/detail?id=${this.id}`).then(res => {
+    this.axios(SONG_DETAIL(this.id)).then(res => {
       this.song = res.data;
       this.loading = false;
     });

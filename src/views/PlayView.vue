@@ -43,6 +43,7 @@
 </template>
 <script>
 import BScroll from "better-scroll";
+import {CHECK_MUSIC,MUSIC_URL,MUSIC_DETAIL,MUSIC_LYRIC} from '../api/api.js'
 export default {
   data() {
     return {
@@ -111,7 +112,7 @@ export default {
     },
     //音乐是否可用
     successMusic() {
-      this.axios(`/api/check/music?id=${this.id}`).then(res => {
+      this.axios(CHECK_MUSIC(this.id)).then(res => {
         if (res.data.success) {
           this.getMusic();
           this.getMusicDetail();
@@ -122,14 +123,14 @@ export default {
     },
     //获取音乐的url方法
     getMusic() {
-      this.axios(`/api/song/url?id=${this.id}`).then(res => {
+      this.axios(MUSIC_URL(this.id)).then(res => {
         this.music = res.data.data[0];
         // console.log(res.data.data[0], "获取音乐的url");
       });
     },
     // 获取音乐详情
     getMusicDetail() {
-      this.axios(`/api/song/detail?ids=${this.id}`).then(res => {
+      this.axios(MUSIC_DETAIL(this.id)).then(res => {
         this.detail = res.data.songs[0].al;
         this.artists = res.data.songs[0].ar;
         // console.log(res.data.songs[0].al, "获取音乐详情");
@@ -138,7 +139,7 @@ export default {
     },
     //获取歌词
     getSongLYric() {
-      this.axios(`/api/lyric?id=${this.id}`).then(res => {
+      this.axios(MUSIC_LYRIC(this.id)).then(res => {
         let lrc = ["[0:0]当前歌曲暂无歌词"];
         if (res.data.lrc) {
           lrc = res.data.lrc.lyric.split(/\n/g);

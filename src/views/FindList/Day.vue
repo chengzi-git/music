@@ -58,6 +58,7 @@
 </template>
 <script>
 import { mapState } from "vuex";
+import {DAY_SONGS} from '../../api/api.js'
 export default {
   data() {
     return {
@@ -83,7 +84,7 @@ export default {
     getToDaySong() {
       if (this.loginState) {
         console.log('获取今日推荐歌曲')
-        this.axios(`/api/recommend/songs`).then(res => {
+        this.axios(DAY_SONGS).then(res => {
           this.loading = false;
           this.songs = res.data.recommend;
         });
