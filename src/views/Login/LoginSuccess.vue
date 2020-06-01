@@ -69,15 +69,15 @@ export default {
   top: 0;
   left: 0;
   z-index: 99;
-  padding: 0 0.4rem;
+  padding: 0 .4rem;
   .top {
     width: 100%;
     height: 2rem;
     display: flex;
     align-items: center;
     .top-text {
-      font-size: 0.6rem;
-      margin-left: 0.4rem;
+      font-size: .6rem;
+      margin-left: .4rem;
     }
   }
 
@@ -98,22 +98,22 @@ export default {
     .phone-right {
       flex: 0 0 1.5rem;
       text-align: right;
-      font-size: 0.3rem;
+      font-size: .3rem;
       color: #333;
     }
   }
   .next {
     width: 100%;
     text-align: center;
-    margin-top: 0.5rem;
+    margin-top: .5rem;
     .next-btn {
       width: 6rem;
-      height: 0.8rem;
+      height: .8rem;
       background-color: #dd001b;
       color: #fff;
       border: 0;
       outline: none;
-      border-radius: 0.4rem;
+      border-radius: .4rem;
       letter-spacing: 3px;
     }
   }

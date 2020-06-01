@@ -59,13 +59,13 @@ export default {
   box-sizing: border-box;
   width: 100%;
   height: 1rem;
-  padding: 0 0.23rem;
+  padding: 0 .23rem;
   position: sticky;
   top: 0;
   z-index: 2;
   background-color: #fff;
   line-height: 1rem;
-  font-size: 0.3rem;
+  font-size: .3rem;
   .nav-left {
     flex: 2;
     display: flex;
@@ -73,7 +73,7 @@ export default {
     align-items: center;
     .fa-bars {
       color: #999;
-      font-size: 0.4rem;
+      font-size: .4rem;
     }
   }
   .nav-center {
@@ -82,7 +82,7 @@ export default {
     justify-content: center;
     align-items: center;
     color: #999;
-    font-size: 0.3rem;
+    font-size: .3rem;
     .nav-list {
       display: flex;
     }
@@ -100,11 +100,11 @@ export default {
     align-items: center;
     .fa-search {
       color: #999;
-      font-size: 0.35rem;
+      font-size: .35rem;
     }
   }
   .router-link-exact-active {
-    font-size: 0.32rem;
+    font-size: .32rem;
     color: #333;
     font-weight: 600;
   }

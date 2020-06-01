@@ -58,7 +58,7 @@ export default {
   top: 0;
   left: 0;
   z-index: 99;
-  padding: 0 0.4rem;
+  padding: 0 .4rem;
   .top {
     width: 100%;
     height: 2rem;
@@ -66,13 +66,13 @@ export default {
     align-items: center;
   }
   .top-text {
-    font-size: 0.6rem;
-    margin-left: 0.4rem;
+    font-size: .6rem;
+    margin-left: .4rem;
   }
   .content-text {
     width: 100%;
     height: 2rem;
-    font-size: 0.3rem;
+    font-size: .3rem;
     line-height: 2rem;
     color: #ccc;
   }
@@ -86,13 +86,13 @@ export default {
     .content-left{
         flex: 0 0 1rem;
       text-align: left;
-      font-size: 0.3rem;
+      font-size: .3rem;
       color: #ccc;
     }
     .content-right {
       flex: 0 0 1rem;
       text-align: right;
-      font-size: 0.3rem;
+      font-size: .3rem;
       color: #ccc;
     }
     .phone-inp {
@@ -108,12 +108,12 @@ export default {
     text-align: center;
     .next-btn {
       width: 6rem;
-      height: 0.8rem;
+      height: .8rem;
       background-color: #dd001b;
       color: #fff;
       border: 0;
       outline: none;
-      border-radius: 0.4rem;
+      border-radius: .4rem;
       letter-spacing: 3px;
     }
   }

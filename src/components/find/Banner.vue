@@ -60,7 +60,7 @@ export default {
 
 .horizontal-enter-active,
 .horizontal-leave-active {
-  transition: all 0.5s linear;
+  transition: all .5s linear;
 }
 
 .horizontal-enter-to,

@@ -33,8 +33,8 @@ export default {
     top: 40%;
     transform: translate(-50%);
     width: 5.3rem;
-    height: 0.8rem;
-    border-radius: 0.4rem;
+    height: .8rem;
+    border-radius: .4rem;
     background-color: #fff;
     color: #dd001b;
     font-weight: 600;
@@ -43,9 +43,9 @@ export default {
     outline: none;
   }
   .fa {
-    font-size: 0.6rem;
+    font-size: .6rem;
     color: #fff;
-    margin: 0.1rem 0 0 0.4rem;
+    margin: .1rem 0 0 .4rem;
   }
 }
 </style>

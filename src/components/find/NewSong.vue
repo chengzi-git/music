@@ -43,14 +43,14 @@ export default {
     display: flex;
     justify-content: space-between;
     .title-left {
-      font-size: 0.4rem;
+      font-size: .4rem;
       font-weight: 600;
     }
     .title-right {
-      font-size: 0.28rem;
+      font-size: .28rem;
       border: 1px solid #ccc;
-      border-radius: 0.25rem;
-      padding: 0.12rem;
+      border-radius: .25rem;
+      padding: .12rem;
     }
   }
   .nav-box {
@@ -62,8 +62,8 @@ export default {
     flex-wrap: wrap;
     .nav-content {
       width: 30%;
-      margin-top: 0.2rem;
-      margin-right: 0.2rem;
+      margin-top: .2rem;
+      margin-right: .2rem;
       &:nth-child(3) {
         margin-right: 0;
       }
@@ -78,7 +78,7 @@ export default {
       position: relative;
       width: 100%;
       height: 100%;
-      border-radius: 0.2rem;
+      border-radius: .2rem;
       overflow: hidden;
       .nav-count {
         position: absolute;
@@ -88,7 +88,7 @@ export default {
         font-size: 12px;
         color: #fff;
         padding-left: 13px;
-        text-shadow: 1px 0 0 rgba(0, 0, 0, 0.15);
+        text-shadow: 1px 0 0 rgba(0, 0, 0, .15);
         background-position: 0;
         background-image: url('../../assets/icon/headset.svg');
         background-repeat: no-repeat;
@@ -101,11 +101,11 @@ export default {
     }
     .nav-name {
       width: 100%;
-      margin-top: 0.2rem;
-      font-size: 0.23rem;
-      line-height: 0.3rem;
+      margin-top: .2rem;
+      font-size: .23rem;
+      line-height: .3rem;
       letter-spacing: 1px;
-      height: 0.6rem;
+      height: .6rem;
       text-overflow: ellipsis;
       overflow: hidden;
     }

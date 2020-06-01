@@ -25,7 +25,7 @@ export default {
     z-index: 99;
 }
 .text{
-  font-size: 0.4rem;
+  font-size: .4rem;
   text-align: center;
 }
 .fa-angle-left{

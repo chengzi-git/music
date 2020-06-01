@@ -143,60 +143,60 @@ export default {
 .wrapper {
   position: relative;
   left: 0;
-  top: -0.8rem;
+  top: -.8rem;
   width: 100vw;
   height: 100vh;
   z-index: 99;
   background: #fff;
-  padding: 0 0.4rem;
+  padding: 0 .4rem;
   box-sizing: border-box;
 }
 
 .keyword-box {
-  margin-top: 0.2rem;
+  margin-top: .2rem;
   background: #fff;
-  padding: 0.2rem;
-  box-shadow: 0.1rem 0.1rem 0.1rem #8888;
+  padding: .2rem;
+  box-shadow: .1rem .1rem .1rem #8888;
   .keyword-box-title {
-    font-size: 0.3rem;
+    font-size: .3rem;
     color: skyblue;
-    margin-bottom: 0.2rem;
+    margin-bottom: .2rem;
   }
   .fa {
-    margin-right: 0.2rem;
+    margin-right: .2rem;
   }
   .keyword-box-item {
     display: flex;
     align-items: center;
-    height: 0.8rem;
-    line-height: 0.8rem;
+    height: .8rem;
+    line-height: .8rem;
     color: #888;
-    font-size: 0.3rem;
+    font-size: .3rem;
   }
 }
 .search-box {
   display: flex;
-  height: 0.7rem;
+  height: .7rem;
   .fa-angle-left {
-    font-size: 0.48rem;
-    height: 0.7rem;
-    line-height: 0.7rem;
+    font-size: .48rem;
+    height: .7rem;
+    line-height: .7rem;
     color: #666;
   }
   .inp {
     flex: 1;
     border: 0;
-    margin-left: 0.3rem;
+    margin-left: .3rem;
     border-bottom: 1px solid #aaa;
     outline: none;
     font-size: 16px;
-    height: 0.7rem;
+    height: .7rem;
   }
   .fa-search {
-    font-size: 0.4rem;
-    height: 0.7rem;
-    line-height: 0.7rem;
-    margin-left: 0.2rem;
+    font-size: .4rem;
+    height: .7rem;
+    line-height: .7rem;
+    margin-left: .2rem;
     color: #666;
   }
 }
@@ -204,58 +204,58 @@ export default {
 .hot-search {
   width: 100%;
   // height: 100vh;
-  // height: calc( 100vh - 0.7rem);
-  margin-top: 0.4rem;
+  // height: calc( 100vh - .7rem);
+  margin-top: .4rem;
   padding-bottom: 1rem;
   overflow: hidden;
   .hot-title {
-    font-size: 0.4rem;
+    font-size: .4rem;
   }
   .hot-list {
     display: flex;
-    margin: 0.2rem 0;
-    margin-top: 0.4rem;
+    margin: .2rem 0;
+    margin-top: .4rem;
     align-items: center;
     .hot-index {
-      font-size: 0.3rem;
-      flex: 0 0 0.6rem;
+      font-size: .3rem;
+      flex: 0 0 .6rem;
       &.active {
         color: red;
       }
     }
     .hot-info-name {
-      font-size: 0.32rem;
+      font-size: .32rem;
       color: #222;
       .hot-info-score {
-        font-size: 0.28rem;
+        font-size: .28rem;
         color: #aaa;
-        margin-left: 0.1rem;
+        margin-left: .1rem;
       }
       .icon {
         display: inline-block;
-        width: 0.3rem;
-        height: 0.2rem;
-        margin-left: 0.2rem;
+        width: .3rem;
+        height: .2rem;
+        margin-left: .2rem;
         background-image: url("../assets/icon/hot.png");
         background-repeat: no-repeat;
-        background-size: 0.3rem 0.2rem;
+        background-size: .3rem .2rem;
       }
     }
     .hot-info-content {
-      font-size: 0.23rem;
+      font-size: .23rem;
       color: #aaa;
-      margin-top: 0.16rem;
+      margin-top: .16rem;
     }
   }
 }
 
 .result {
-  margin-top: 0.2rem;
+  margin-top: .2rem;
   // width: 100vw;
   // height: 100vh;
   overflow: hidden;
   .result-title {
-    font-size: 0.4rem;
+    font-size: .4rem;
     font-weight: bold;
     width: 100vw;
     height: 1rem;
@@ -270,7 +270,7 @@ export default {
     flex: 1;
     overflow: hidden;
     .song_name {
-      font-size: 0.34rem;
+      font-size: .34rem;
       color: #333;
       overflow: hidden;
       white-space: nowrap;
@@ -279,23 +279,23 @@ export default {
         color: skyblue;
       }
       .song_alias {
-        margin-left: 0.2rem;
+        margin-left: .2rem;
         color: #7c7b7d;
-        font-size: 0.3rem;
+        font-size: .3rem;
       }
     }
     .song_author {
-      font-size: 0.23rem;
+      font-size: .23rem;
       color: #7c7b7d;
-      margin-top: 0.1rem;
+      margin-top: .1rem;
     }
   }
   .song_play {
-    width: 0.4rem;
+    width: .4rem;
     height: 1rem;
-    line-height: 0.5rem;
+    line-height: .5rem;
     .fa-play-circle-o {
-      font-size: 0.4rem;
+      font-size: .4rem;
       color: #ccc;
     }
   }

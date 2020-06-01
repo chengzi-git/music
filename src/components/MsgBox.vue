@@ -30,7 +30,7 @@ export default {
   text-align: center;
   color: #444;
   line-height: 50px;
-  transition: top 0.2s linear;
+  transition: top .2s linear;
   z-index: 9999;
   font-size: .3rem;
 }

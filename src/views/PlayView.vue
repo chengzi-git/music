@@ -30,7 +30,7 @@
             <li
               v-for="(lrc,i) in lyric"
               :key="i"
-              :style="{color:i == `${lyricIndex}` ? 'rgb(254,254,254)' : 'rgba(255, 255, 255, 0.6)'}"
+              :style="{color:i == `${lyricIndex}` ? 'rgb(254,254,254)' : 'rgba(255, 255, 255, .6)'}"
               class="music-lyric-item"
             >{{lrc.split(']')[1]}}</li>
           </ul>
@@ -98,7 +98,7 @@ export default {
         //设置旋转
         clearInterval(this.timer);
         this.timer = setInterval(() => {
-          let r = this.rotate + 0.5;
+          let r = this.rotate + .5;
           if (r > 360) {
             r = -(360 - r);
           }
@@ -231,12 +231,12 @@ export default {
       top: 0;
       width: 1rem;
       height: 1rem;
-      line-height: 0.8rem;
+      line-height: .8rem;
       z-index: 99;
     .fa-angle-left {
-      font-size: 0.6rem;
-      padding-left: 0.4rem;
-      color: rgba(255,255,255,0.8);
+      font-size: .6rem;
+      padding-left: .4rem;
+      color: rgba(255,255,255,.8);
     }
   }
   .play-view-bg {
@@ -258,7 +258,7 @@ export default {
     width: 100vw;
     height: 100vh;
     backdrop-filter: blur(15px);
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, .2);
     overflow: hidden;
     z-index: 10;
   }
@@ -341,33 +341,33 @@ export default {
   }
   .music-info {
     position: relative;
-    margin-top: 0.5rem;
-    padding: 0 0.7rem;
+    margin-top: .5rem;
+    padding: 0 .7rem;
     z-index: 10;
     text-align: center;
 
     .music-header {
       color: white;
-      font-size: 0.36rem;
+      font-size: .36rem;
       line-height: 1.1;
     }
     .music-header-sname {
-      font-size: 0.3rem;
-      color: rgba(255, 255, 255, 0.8);
+      font-size: .3rem;
+      color: rgba(255, 255, 255, .8);
       font-weight: 400;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     }
 
     .music-lyric-wrapper {
-      margin-top: 0.28rem;
+      margin-top: .28rem;
       height: 1.12rem;
       overflow: hidden;
     }
     .music-lyric-item {
       padding-bottom: 8px;
-      font-size: 0.3rem;
+      font-size: .3rem;
       line-height: 1.5;
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(255, 255, 255, .8);
     }
   }
 }

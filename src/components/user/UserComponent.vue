@@ -147,7 +147,7 @@ export default {
   mounted() {
     this.axios(LOGIN_STATUS)
       .then(res => {
-        console.log("目前为登录状态==>", res);
+        console.log("目前为登录状态==>");
         if (res.data.code == 200) {
           localStorage.setItem("nickname", res.data.profile.nickname);
           this.avatarUrl=res.data.profile.avatarUrl;
@@ -173,11 +173,11 @@ export default {
 }
 .left-enter-active,
 .left-leave-active {
-  transition: all 0.5s;
+  transition: all .5s;
 }
 
 /* .wrapper {
-  transition: all 0.5s linear;
+  transition: all .5s linear;
 } */
 .skr {
   width: 100vw;
@@ -186,7 +186,7 @@ export default {
   left: 0;
   top: 0;
   z-index: 10;
-  opacity: 0.7;
+  opacity: .7;
   background-color: #000;
 }
 .user-container {
@@ -200,11 +200,11 @@ export default {
   .user-info-content {
     width: 100%;
     height: 3rem;
-    padding: 0.4rem 0 0 0.4rem;
+    padding: .4rem 0 0 .4rem;
     .user-text {
-      font-size: 0.3rem;
+      font-size: .3rem;
       line-height: 1.5rem;
-      margin-left: 0.2rem;
+      margin-left: .2rem;
     }
     .fa-money{
       margin-right: .1rem;
@@ -230,33 +230,33 @@ export default {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    padding: 1rem 0.23rem 0.9rem;
+    padding: 1rem .23rem .9rem;
     width: 100%;
     height: 3rem;
-    background-color: hsla(0, 0%, 80%, 0.3);
+    background-color: hsla(0, 0%, 80%, .3);
     .user-text {
-      font-size: 0.2rem;
-      line-height: 0.3rem;
-      color: rgba(0, 0, 0, 0.4);
+      font-size: .2rem;
+      line-height: .3rem;
+      color: rgba(0, 0, 0, .4);
       text-align: center;
     }
     .btn-box {
       text-align: center;
-      line-height: 0.4rem;
+      line-height: .4rem;
     }
     .user-btn {
       background-color: transparent;
       box-sizing: border-box;
-      padding: 0.1rem 0.5rem;
-      border: 1px solid rgba(0, 0, 0, 0.4);
-      border-radius: 0.5rem;
-      font-size: 0.2rem;
-      color: rgba(0, 0, 0, 0.4);
+      padding: .1rem .5rem;
+      border: 1px solid rgba(0, 0, 0, .4);
+      border-radius: .5rem;
+      font-size: .2rem;
+      color: rgba(0, 0, 0, .4);
       outline: none;
     }
   }
   .user-nav {
-    margin-top: 0.5rem;
+    margin-top: .5rem;
     display: flex;
     .nav-item {
       flex: 1;
@@ -266,33 +266,33 @@ export default {
       align-items: center;
     }
     .fa {
-      font-size: 0.4rem;
+      font-size: .4rem;
       color: #e4393c;
     }
     .nav-text {
-      margin-top: 0.1rem;
-      font-size: 0.2rem;
+      margin-top: .1rem;
+      font-size: .2rem;
     }
   }
   .user-list {
-    margin-left: 0.4rem;
+    margin-left: .4rem;
     color: #444;
     .list-item {
       height: 1rem;
     }
     .fa {
-      font-size: 0.3rem;
-      margin-right: 0.2rem;
+      font-size: .3rem;
+      margin-right: .2rem;
     }
     .nav-text {
-      font-size: 0.3rem;
+      font-size: .3rem;
     }
   }
   .user-footer {
     position: fixed;
     left: 0;
-    bottom: 0.2rem;
-    margin: 0.4rem 0 0 0.2rem;
+    bottom: .2rem;
+    margin: .4rem 0 0 .2rem;
     width: 80vw;
     height: 1rem;
     display: flex;
@@ -305,11 +305,11 @@ export default {
       text-align: center;
     }
     .fa {
-      font-size: 0.4rem;
-      margin-right: 0.1rem;
+      font-size: .4rem;
+      margin-right: .1rem;
     }
     .footer-text {
-      font-size: 0.3rem;
+      font-size: .3rem;
     }
   }
 }

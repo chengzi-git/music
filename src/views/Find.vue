@@ -63,7 +63,7 @@ export default {
     }),
     reloadFun() {
       setTimeout(() => {
-        //0.1秒后改变
+        //.1秒后改变
         if (this.reload) {
           //刷新
           this.$router.go(0);
@@ -90,21 +90,21 @@ export default {
     flex: 1;
     height: 100%;
     text-align: center;
-    font-size: 0.3rem;
+    font-size: .3rem;
     position: relative;
   }
   .nav-item-bgcolor {
-    width: 0.8rem;
-    height: 0.8rem;
-    background-color: rgba(232, 68, 39, 0.77);
+    width: .8rem;
+    height: .8rem;
+    background-color: rgba(232, 68, 39, .77);
     border-radius: 50%;
     position: absolute;
     top: -15%;
     left: 50%;
     transform: translateX(-50%) translateY(50%);
-    line-height: 1rem;
+    line-height: 0.9rem;
     .fa {
-      font-size: 0.5rem;
+      font-size: .48rem;
       color: white;
     }
     .fa-align-right {
@@ -117,7 +117,7 @@ export default {
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(50%);
-    font-size: 0.28rem;
+    font-size: .28rem;
   }
 }
 </style>

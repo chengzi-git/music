@@ -9,7 +9,7 @@
 </script>
 <style lang="scss" scoped>
 .text{
-  font-size: 0.4rem;
+  font-size: .4rem;
   text-align: center;
 }
 </style>
