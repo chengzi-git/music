@@ -64,14 +64,20 @@
       </div>
       <div class="wrapper_content">
         <div
-        class="warpper_loading"
-        v-loading="loading"
-        element-loading-text="拼命加载中"
-        element-loading-spinner="el-icon-loading"
-        element-loading-background="rgba(0, 0, 0, .8)"
-        style="width: 100%"
-      ></div>
-        <router-link tag="div"  class="wrapper_list" v-for="(item,i) in this.song.playlist.tracks" :key="i" :to="{name:'PlayView',query:{id:item.id}}">
+          class="warpper_loading"
+          v-loading="loading"
+          element-loading-text="拼命加载中"
+          element-loading-spinner="el-icon-loading"
+          element-loading-background="rgba(0, 0, 0, .8)"
+          style="width: 100%"
+        ></div>
+        <router-link
+          tag="div"
+          class="wrapper_list"
+          v-for="(item,i) in this.song.playlist.tracks"
+          :key="i"
+          :to="{name:'PlayView',query:{id:item.id}}"
+        >
           <span class="song_index">{{i+1}}</span>
           <div class="song-content">
             <p class="song_name">{{item.name}}</p>
@@ -86,7 +92,7 @@
   </div>
 </template>
 <script>
-import {SONG_DETAIL} from '../../api/api.js'
+import { SONG_DETAIL } from "../../api/api.js";
 export default {
   data() {
     return {
@@ -94,7 +100,7 @@ export default {
       title: this.$route.query.title,
       count: this.$route.query.count,
       id: this.$route.query.id,
-      loading:true,
+      loading: true,
       song: {
         playlist: {
           creator: { avatarUrl: "" },
@@ -106,13 +112,30 @@ export default {
   methods: {
     goback() {
       this.$router.go(-1);
+    },
+    getData() {
+      this.axios(SONG_DETAIL(this.id)).then(res => {
+        this.song = res.data;
+        this.loading = false;
+      });
     }
   },
   mounted() {
-    this.axios(SONG_DETAIL(this.id)).then(res => {
-      this.song = res.data;
-      this.loading = false;
-    });
+    this.getData();
+  },
+  watch: {
+    $route(to, from) {
+      if (to.query.id != from.query.id && to.name == "Song") {
+        // this.$router.go(0);
+        this.axios(SONG_DETAIL(to.query.id)).then(res => {
+          this.song = res.data;
+          this.loading = false;
+          this.img = to.query.img;
+          this.title = to.query.title;
+          this.count = to.query.count;
+        });
+      }
+    }
   }
 };
 </script>
@@ -125,13 +148,13 @@ export default {
   background: #fff;
   width: 100vw;
   // height: 100vw;
-  padding: 0 .25rem;
+  padding: 0 0.25rem;
   .skr {
     height: 6rem;
     position: absolute;
     left: 0;
     top: 0;
-    opacity: .8;
+    opacity: 0.8;
     filter: brightness(10%);
     // filter: blur(.2rem);
 
@@ -143,22 +166,22 @@ export default {
   }
   .wrapper_top {
     height: 6rem;
-    width: calc(100vw -.5rem);
+    width: calc(100vw -0.5rem);
     color: white;
     display: flex;
     flex-direction: column;
     .nav {
       flex: 0 0 1rem;
       height: 1rem;
-      line-height: .5rem;
+      line-height: 0.5rem;
     }
     .fa-angle-left {
-      font-size: .8rem;
+      font-size: 0.8rem;
       padding-right: 5px;
     }
     .nav_title {
-      padding-left: .1rem;
-      font-size: .35rem;
+      padding-left: 0.1rem;
+      font-size: 0.35rem;
       font-weight: 600;
       vertical-align: 5px;
       width: 8rem;
@@ -173,17 +196,17 @@ export default {
         width: 3rem;
         height: 3rem;
         position: relative;
-        border-radius: .11rem;
+        border-radius: 0.11rem;
         overflow: hidden;
         .info-count {
           position: absolute;
-          right: .1rem;
-          top: .1rem;
+          right: 0.1rem;
+          top: 0.1rem;
           display: inline-block;
-          font-size: .24rem;
+          font-size: 0.24rem;
           color: #fff;
-          padding-left: .24rem;
-          text-shadow: 1px 0 0 rgba(0, 0, 0, .15);
+          padding-left: 0.24rem;
+          text-shadow: 1px 0 0 rgba(0, 0, 0, 0.15);
           background-position: 0;
           background-image: url("../../assets/icon/headset.svg");
           background-repeat: no-repeat;
@@ -199,9 +222,9 @@ export default {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        padding-left: .2rem;
+        padding-left: 0.2rem;
         > p {
-          font-size: .36rem;
+          font-size: 0.36rem;
           line-height: 1.5;
           text-overflow: ellipsis;
           overflow: hidden;
@@ -212,19 +235,19 @@ export default {
           align-items: center;
           color: #ccc;
           .creator_img {
-            width: .5rem;
-            height: .5rem;
+            width: 0.5rem;
+            height: 0.5rem;
             img {
               border-radius: 50%;
             }
           }
           .creator_name {
-            font-size: .25rem;
-            margin-left: .2rem;
+            font-size: 0.25rem;
+            margin-left: 0.2rem;
           }
           .fa-angle-right {
-            font-size: .3rem;
-            margin-left: .2rem;
+            font-size: 0.3rem;
+            margin-left: 0.2rem;
           }
         }
         .description {
@@ -238,11 +261,11 @@ export default {
             -webkit-line-clamp: 2;
             overflow: hidden;
             -webkit-box-orient: vertical;
-            font-size: .3rem;
+            font-size: 0.3rem;
           }
           .fa {
-            font-size: .3rem;
-            margin-left: .2rem;
+            font-size: 0.3rem;
+            margin-left: 0.2rem;
           }
         }
       }
@@ -251,18 +274,18 @@ export default {
       display: flex;
       align-items: center;
       text-align: center;
-      margin-top: .6rem;
+      margin-top: 0.6rem;
       .list_div {
         flex: 1;
         display: flex;
         flex-direction: column;
       }
       .fa {
-        font-size: .4rem;
+        font-size: 0.4rem;
       }
       span {
-        font-size: .28rem;
-        margin-top: .1rem;
+        font-size: 0.28rem;
+        margin-top: 0.1rem;
       }
     }
   }
@@ -271,69 +294,69 @@ export default {
     align-content: center;
     justify-content: space-between;
     .nav_content {
-      line-height: .5rem;
+      line-height: 0.5rem;
       .fa-play-circle-o {
-        font-size: .35rem;
+        font-size: 0.35rem;
       }
       .title {
-        font-size: .35rem;
-        margin-left: .1rem;
+        font-size: 0.35rem;
+        margin-left: 0.1rem;
       }
       .count {
-        font-size: .28rem;
-        margin-left: .1rem;
+        font-size: 0.28rem;
+        margin-left: 0.1rem;
         color: #666;
       }
     }
     .nav_collect {
-      height: .75rem;
-      line-height: .2rem;
+      height: 0.75rem;
+      line-height: 0.2rem;
       background: linear-gradient(180deg, #ff1a00 19%, #ff1a00 50%);
-      border-radius: .4rem;
-      padding: 0 .2rem;
-      margin-top: .2rem;
+      border-radius: 0.4rem;
+      padding: 0 0.2rem;
+      margin-top: 0.2rem;
       .collect_count {
-        font-size: .25rem;
+        font-size: 0.25rem;
         color: #fff;
       }
     }
   }
-  .wrapper_loading{
+  .wrapper_loading {
     text-align: center;
     width: 100vw;
     height: 100vh;
-    font-size: .6rem;
+    font-size: 0.6rem;
     line-height: 2;
   }
   .wrapper_content {
-    margin-top: .2rem;
+    margin-top: 0.2rem;
     .wrapper_list {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
     .song_index {
-      font-size: .34rem;
+      font-size: 0.34rem;
       color: #999;
     }
     .song-content {
       flex: 1;
-      margin-left: .4rem;
+      margin-left: 0.4rem;
       .song_name {
-        font-size: .34rem;
+        font-size: 0.34rem;
         color: #333;
       }
       .song_author {
-        font-size: .23rem;
+        font-size: 0.23rem;
         color: #7c7b7d;
-        margin-top: .1rem;
+        margin-top: 0.1rem;
       }
     }
     .song_play {
       height: 1rem;
-      line-height: .5rem;
+      line-height: 0.5rem;
       .fa-play-circle-o {
-        font-size: .4rem;
+        font-size: 0.4rem;
         color: #ccc;
       }
     }

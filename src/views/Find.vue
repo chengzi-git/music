@@ -33,7 +33,9 @@
         <span class="nav-item-text">私人FM</span>
       </router-link>
     </div>
-    <router-view />
+      <keep-alive>
+      <router-view />
+    </keep-alive>
     <RecommendedSong />
     <NewSong />
   </div>

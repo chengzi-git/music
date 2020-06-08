@@ -83,7 +83,7 @@ export default {
     //获取今日推荐歌曲
     getToDaySong() {
       if (this.loginState) {
-        console.log('获取今日推荐歌曲')
+        // console.log('获取今日推荐歌曲')
         this.axios(DAY_SONGS).then(res => {
           this.loading = false;
           this.songs = res.data.recommend;

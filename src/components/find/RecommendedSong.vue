@@ -30,7 +30,7 @@ export default {
       this.data = res.data.result;
       // console.log(res.data.result);
     });
-  }
+  },
 };
 </script>
 <style lang="scss" scoped>
